@@ -27,8 +27,10 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public void addUser(@RequestParam String name, @RequestParam String email, HttpServletResponse response) throws IOException {
-        User user = new User(name, email);
+    public void addUser(@RequestParam String nickname, @RequestParam String email, HttpServletResponse response) throws IOException {
+        User user = new User();
+        user.setNickname(nickname);
+        user.setEmail(email);
         log.info("User to save: {}", user);
         userRepository.save(user);
         response.sendRedirect("/");

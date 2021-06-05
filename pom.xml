@@ -13,7 +13,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <properties>
@@ -26,6 +26,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>7.9.2</version>
+                <configuration>
+                    <baselineOnMigrate>true</baselineOnMigrate>
+                    <configFiles>
+                        <configFile>src/main/resources/dev.application.properties</configFile>
+                    </configFiles>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -37,12 +48,6 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.20</version>
         </dependency>
-<!--        &lt;!&ndash;Hibernate&ndash;&gt;
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.5.0.Final</version>
-        </dependency>-->
         <!--Spring-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -72,6 +77,12 @@
             <scope>provided</scope>
         </dependency>
 
+<!--        &lt;!&ndash;Jackson-core &ndash;&gt;
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.12.3</version>
+        </dependency>-->
 
         <!--Tests-->
         <dependency>

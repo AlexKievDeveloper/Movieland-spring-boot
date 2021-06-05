@@ -1,30 +1,23 @@
 package com.hlushkov.movieland.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.hlushkov.movieland.common.Role;
+import lombok.Data;
 
 import javax.persistence.*;
 
-@ToString
-@Setter
-@Getter
+@Data
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
-    public User() {
-    }
-
-    public User(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String name;
+    private int id;
+    private String nickname;
     private String email;
+    private String password;
+    private String salt;
+    private Role role;
 
 
 }
