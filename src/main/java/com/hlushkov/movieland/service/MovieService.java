@@ -2,6 +2,12 @@ package com.hlushkov.movieland.service;
 
 import com.hlushkov.movieland.entity.Movie;
 
+import java.util.List;
+
 public interface MovieService {
-    Iterable<Movie> findAll();
+
+    List<Movie> findAll();
+
+    List<Movie> findRandom(int randomMovieCount);
+
 }

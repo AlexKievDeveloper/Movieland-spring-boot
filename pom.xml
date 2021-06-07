@@ -8,7 +8,6 @@
     <artifactId>movieland-hiber</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -17,7 +16,18 @@
     </parent>
 
     <properties>
+        <!--Maven config-->
         <java.version>11</java.version>
+
+        <!--Source dependencies-->
+        <flyway.version>7.5.1</flyway.version>
+        <lombok.version>1.18.20</lombok.version>
+
+        <!--Test dependencies-->
+        <mockito.version>3.6.28</mockito.version>
+        <testcontainer.version>1.15.1</testcontainer.version>
+        <rider-spring-version>1.16.1</rider-spring-version>
+        <javax.persistence.version>2.2</javax.persistence.version>
     </properties>
 
     <build>
@@ -41,22 +51,23 @@
     </build>
 
     <dependencies>
-        <!--DB-->
         <!--Postgresql-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.2.20</version>
         </dependency>
+
         <!--Spring-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -73,21 +84,46 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
-<!--        &lt;!&ndash;Jackson-core &ndash;&gt;
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.12.3</version>
-        </dependency>-->
 
         <!--Tests-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Test containers-->
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>${testcontainer.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Postgresql for test containers-->
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${testcontainer.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--DBRider-->
+        <dependency>
+            <groupId>com.github.database-rider</groupId>
+            <artifactId>rider-spring</artifactId>
+            <version>${rider-spring-version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Flyway-core-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
